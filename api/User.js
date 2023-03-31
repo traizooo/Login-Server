@@ -1,3 +1,5 @@
+// Load environment variables from a .env file
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 
@@ -20,8 +22,8 @@ const path = require("path");
 let transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user:"authi.miows@hotmail.com",
-        pass:"jestemkox1"
+        user: process.env.AUTH_EMAIL,
+        pass: process.env.AUTH_PASS,
     }
 });
 
@@ -29,8 +31,8 @@ transporter.verify((error, success) => {
     if(error) {
         console.log(error)
     } else {
+        console.log("----------------------------")
         console.log("EMAIL READY!")
-        console.log(success)
     }
 });
 
@@ -117,11 +119,16 @@ const sendOTPVerificationEmail = async ({ _id, email }, res) => {
         const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
 
         const mailOptions = {
-            from: "authi.miows@hotmail.com",
+            from: process.env.AUTH_EMAIL,
             to: email,
             subject: "Verify your Account",
-            html: `<p>Enter: <b>${otp}</b> in the app to verify your email address and complete the signup process.</p>
-            <p>This code <b>expires in 1 hour!</b></p>`,
+            html: `<div style="background-color: #f2f8fc; padding: 20px; text-align: center;">
+            <p style="font-family: Arial, sans-serif; font-size: 20px; color: #333;">
+              Enter: <span style="font-weight: bold; color: #007bff; font-size: 24px;">${otp}</span> in the app to verify your email address and complete the signup process.
+              <br>
+              This code <b>expires in 1 hour!</b>
+            </p>
+          </div>`
         };
 
         const saltRounds = 10;
@@ -220,7 +227,7 @@ const sendVerificationEmail = ({_id, email}, res) => {
     const uniqueString = uuidv4() + _id;
 
     const mailOptions = {
-        from: "authi.miows@hotmail.com",
+        from: process.env.AUTH_EMAIL,
         to: email,
         subject: "Verify your Email",
         html: `<p>Verify your email address to complete the signup and login into your account.</p><p>This link 
@@ -477,7 +484,7 @@ const sendResetEmail = ({_id, email}, redirectURL, res) => {
         .deleteMany({userId: _id})
         .then(result => {
             const mailOptions = {
-                from: "authi.miows@hotmail.com",
+                from: process.env.AUTH_EMAIL,
                 to: email,
                 subject: "Password Reset",
                 html: `<p>You requested password reset</p><p>This link 

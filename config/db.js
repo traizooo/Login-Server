@@ -13,6 +13,8 @@ mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true // Use the new Server Discover and Monitoring engine
 })
 .then(() => {
-    console.log("DB connected"); // Log a success message if the connection is successful
+    console.log("------------")
+    console.log("DB CONNECTED"); // Log a success message if the connection is successful
+    console.log("------------")
 })
 .catch((err) => console.log(err)); // Log an error message if the connection fails

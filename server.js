@@ -5,7 +5,7 @@ require('./config/db');
 const app = require('express')();
 
 // Define the port number for the server to listen on
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Import the UserRouter module, which presumably defines routes for user-related API endpoints
 const UserRouter = require('./api/User');
@@ -19,5 +19,7 @@ app.use('/user', UserRouter);
 
 // Start the server listening on the specified port and log a message to the console when it starts
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log("----------------------------")
+    console.log("----------------------------")
+    console.log(`Server running on port: ${port}`);
 });
