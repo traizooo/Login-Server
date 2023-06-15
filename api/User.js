@@ -2,21 +2,13 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
-
 const User = require('./../models/User');
-
 const UserVerification = require('./../models/UserVerification');
-
 const UserOTPVerification = require('./../models/UserOTPVerification')
-
 const PasswordReset = require("./../models/PasswordReset");
-
 const nodemailer = require("nodemailer");
-
 const {v4: uuidv4} = require("uuid");
-
 const bcrypt = require("bcrypt");
-
 const path = require("path");
 
 let transporter = nodemailer.createTransport({
@@ -44,36 +36,21 @@ router.post('/signup', (req, res) => {
     password = password.trim();
 
     if (name == "" || email == "" || userName == "" || password == "") {
-        res.json({
-            status: "FAILED",
-            message: "Empty input fields!"
-        });
+        throw Error("Empty input fields!")
     } else if (!/^[a-zA-Z ]*$/.test(name)) {
-        res.json({
-            status: "FAILED",
-            message: "Invalid name entered"
-        });
+        throw Error("Invalid name entered!")
     } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-        res.json({
-            status: "FAILED",
-            message: "Invalid email entered"
-        });
+        throw Error("Invalid email entered!")
     } else if (!/^[a-zA-Z ]*$/.test(name)) {
-        res.json({
-            status: "FAILED",
-            message: "Invalid user name entered"
-        });
+        throw Error("Invalid user name entered!")
     } else if (password.lenght < 8) {
-        res.json({
-            status: "FAILED",
-            message: "Password is too short!",
-        });
+        throw Error("Password too short!")
     } else {
         User.find({email}).then(result => {
             if (result.length) {
                 res.json({
                     status: "FAILED",
-                    message: "User already exists"
+                    message: "User already exists!"
                 });
             } else {
                 const saltRounds = 10;
@@ -220,12 +197,9 @@ router.post("/resendOTPVerificationCode", async (req, res) => {
     }
 });
 
-
 const sendVerificationEmail = ({_id, email}, res) => {
     const currentURL = "http://localhost:3000/";
-
     const uniqueString = uuidv4() + _id;
-
     const mailOptions = {
         from: process.env.AUTH_EMAIL,
         to: email,
@@ -234,7 +208,6 @@ const sendVerificationEmail = ({_id, email}, res) => {
         <b>expires in 6 hours</b>.</p><p>Press <a href=${currentURL + "user/verify/" + _id + "/" + uniqueString}>HERE</a>
         to proceed.</p>`,
     };
-
 
     const saltRounds = 10;
     bcrypt
