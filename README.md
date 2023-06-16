@@ -116,5 +116,5 @@
 
 # Feedback
 
-If you have any feedback, please reach out to us at michal.owsiejew23@gmail.com
+If you have any feedback, please reach out to me at michal.owsiejew23@gmail.com
 
