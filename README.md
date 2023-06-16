@@ -41,7 +41,7 @@
 ```
 
 
-## **API Reference**
+# **API Reference**
 
 #### Sign up
 
@@ -102,19 +102,19 @@
 ```http
   POST /api/resetPassword
 ```
-## **Badges**
+# **Badges**
 
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 
 
-## **Author**
+# **Author**
 
 - [Michael Owsiejew](https://www.github.com/traizooo)
 
 
-## Feedback
+# Feedback
 
 If you have any feedback, please reach out to us at michal.owsiejew23@gmail.com
 
