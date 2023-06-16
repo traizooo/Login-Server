@@ -3,7 +3,7 @@
 
 ### This repository contains a Node.js server implementation for user login and signup functionality with email and OTP (One-Time Password) authentication. The server is built using popular frameworks and libraries, offering a robust and secure authentication system. 
 
-**Features**
+# **Features**
 
 1. User registration: New users can sign up by providing their email address and choosing a password.
 2. Email verification: A verification email is sent to the user's provided email address, containing a unique OTP.
