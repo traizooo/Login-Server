@@ -23,8 +23,9 @@ transporter.verify((error, success) => {
     if(error) {
         console.log(error)
     } else {
-        console.log("----------------------------")
+        console.log("------------")
         console.log("EMAIL READY!")
+        console.log("------------")
     }
 });
 
@@ -65,7 +66,7 @@ router.post('/signup', (req, res) => {
 
                     newUser.save().then(result => {
                         //sendVerificationEmail(result, res);
-                        sendOTPVerificationEmail(result, res);
+                        sendVerificationEmail(result, res);
                     })
                     .catch(err => {
                         res.json({
