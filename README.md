@@ -3,7 +3,15 @@
 
 ### This repository contains a Node.js server implementation for user login and signup functionality with email and OTP (One-Time Password) authentication. The server is built using popular frameworks and libraries, offering a robust and secure authentication system. 
 
-# **Features**
+## **.env file structure:**
+
+```bash
+MONGODB_URI=<mongodb_uri>
+AUTH_EMAIL=<auth_email>
+AUTH_PASS=<auth_pass>
+```
+
+## **Features**
 
 1. User registration: New users can sign up by providing their email address and choosing a password.
 2. Email verification: A verification email is sent to the user's provided email address, containing a unique OTP.
@@ -14,7 +22,7 @@
 7. Middleware for authentication: The server includes middleware that ensures only authenticated requests are processed.
 8. Error handling: Proper error handling is implemented to provide informative responses for various scenarios.
 
-# **Start locally**
+## **Start locally**
 
 **Clone project**
 
@@ -41,7 +49,7 @@
 ```
 
 
-# **API Reference**
+## **API Reference**
 
 #### Sign up
 
@@ -103,12 +111,12 @@
   POST /api/resetPassword
 ```
 
-# **Author**
+## **Author**
 
 - [Michael Owsiejew](https://www.github.com/traizooo)
 
 
-# Feedback
+## Feedback
 
 If you have any feedback, please reach out to me at michal.owsiejew23@gmail.com
 
