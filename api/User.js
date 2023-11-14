@@ -425,8 +425,6 @@ router.post("/requestPasswordReset", (req, res) => {
         .find({email})
         .then((data) => {
             if (data.length) {
-
-
                 if (!data[0].verified) {
                     res.json({
                         status: "FAILED",
