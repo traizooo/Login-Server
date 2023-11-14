@@ -117,6 +117,10 @@ AUTH_PASS=<auth_pass>
 
 
 ## Feedback
+<<<<<<< HEAD
 
 If you have any feedback, please reach out to me at michal.owsiejew23@gmail.com
+=======
+>>>>>>> 88b636f (Commit)
 
+If you have any feedback, please reach out to me at michal.owsiejew23@gmail.com
